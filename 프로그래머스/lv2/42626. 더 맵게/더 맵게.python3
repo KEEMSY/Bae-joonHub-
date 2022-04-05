@@ -1,0 +1,11 @@
+import heapq
+
+def solution(S, k):
+    heapq.heapify(S)
+    cnt = 0
+    while S[0]<k:    
+        heapq.heappush(S,heapq.heappop(S) + (heapq.heappop(S) * 2))
+        cnt += 1
+        if len(S)==1 and S[0]<k:
+            return -1
+    return cnt
