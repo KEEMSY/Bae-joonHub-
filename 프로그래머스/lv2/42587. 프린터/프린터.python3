@@ -1,0 +1,19 @@
+def solution(pri, loc):
+    idx = 0
+    for i in range(len(pri)):
+        pri[i] = [pri[i],idx]
+        idx += 1
+        
+    answer = 0
+    while pri:
+        check = max(pri)
+        if check[0] == pri[0][0]:
+            if pri[0][1] == loc:
+                answer += 1
+                return answer
+            else:
+                pri.pop(0)
+                answer += 1
+        else:
+            pri.append(pri[0])
+            pri.pop(0)
