@@ -1,0 +1,49 @@
+def check(temp):
+    cnt = 0
+    t = len(temp)
+    for i in range(t):
+        if temp[i] == '(':
+            cnt += 1
+            
+        else:
+            cnt -= 1
+            
+        if cnt < 0:
+            return False 
+        
+    return True 
+
+def sol(temp):
+    if len(temp) == 0:
+        return temp
+    
+    t = len(temp)
+    cnt = 0
+    index = -1
+    for i in range(t):
+        if temp[i] == '(':
+            cnt += 1
+        else:
+            cnt -= 1
+            
+        if cnt == 0:
+            index = i
+            break
+            
+    u = temp[:index+1]
+    v = temp[index+1:]
+    
+    if check(u):
+        return u + sol(v)
+    else:
+        result = '('
+        result += sol(v)
+        result += ')'
+        
+
+        return result + ''.join(map(lambda x : ')' if x == '(' else '(', u[1:-1]))
+        
+    
+    
+def solution(p):
+    return sol(p)
