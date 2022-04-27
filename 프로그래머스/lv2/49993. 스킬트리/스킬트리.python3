@@ -1,0 +1,17 @@
+def solution(skill, skill_trees):
+    st = len(skill_trees)
+    s = len(skill)
+    answer = len(skill_trees)
+    for i in range(st):
+        temp = ""
+        for j in skill_trees[i]:
+            if j in skill:
+                temp += j
+        for k in range(len(temp)):
+            if skill[k] == temp[k]:
+                continue
+            else:
+                answer -= 1
+                break
+                
+    return answer
