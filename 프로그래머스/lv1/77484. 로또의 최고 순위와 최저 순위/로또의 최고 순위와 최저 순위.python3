@@ -1,0 +1,8 @@
+def solution(lo, win):
+    correct_cnt = 0
+    cheat_cnt = lo.count(0)
+    for check in lo:
+        if check in win:
+            correct_cnt += 1
+    rank = [6,6,5,4,3,2,1]
+    return rank[correct_cnt+cheat_cnt], rank[correct_cnt]
