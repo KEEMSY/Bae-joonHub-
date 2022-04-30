@@ -1,0 +1,19 @@
+def solution(board, moves):
+    answer = 0
+    temp = []
+    b = len(board)
+    m = len(moves)
+    for idx in range(m):
+        for i in range(b):
+            if board[i][moves[idx]-1] == 0:
+                continue
+            
+            else:
+                temp.append(board[i][moves[idx]-1])
+                board[i][moves[idx]-1] = 0
+                
+                if len(temp) >=2 and temp[-2] == temp[-1]:
+                    temp = temp[:len(temp)-2]
+                    answer += 2
+                break
+    return answer
