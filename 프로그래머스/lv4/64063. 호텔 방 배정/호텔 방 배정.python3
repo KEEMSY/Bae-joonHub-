@@ -1,0 +1,17 @@
+import sys
+sys.setrecursionlimit(3000000)
+def solution(k, room_number):
+    next_room = dict()
+    
+    def find_rooms(now):
+        if now not in next_room.keys():
+            next_room[now] = now + 1
+            return now + 1
+        else:
+            next_room[now] = find_rooms(next_room[now])
+            return next_room[now]
+        
+    for room in room_number:
+        find_rooms(room)
+    
+    return list(next_room.keys())
