@@ -1,5 +1,3 @@
-
-
 def solution(tickets):
     answer = []
     tickets.sort(reverse=True)
