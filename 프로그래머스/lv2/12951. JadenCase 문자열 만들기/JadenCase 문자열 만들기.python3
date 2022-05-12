@@ -1,0 +1,21 @@
+def solution(s):
+    answer = []
+    s = s.split(' ')                
+            
+    for frag in s:
+
+        if frag == '':
+            head = ''
+        elif  frag[0].isdigit() or frag[0].isupper():
+            head = frag[0]
+        else:
+            head = frag[0].upper()
+        
+        if len(frag) > 1:
+            tail = frag[1:].lower()
+            frag = head + tail
+            answer.append(frag)
+        else:
+            answer.append(head)
+    
+    return ' '.join(answer)
