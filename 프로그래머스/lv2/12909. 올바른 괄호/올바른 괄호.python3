@@ -1,0 +1,18 @@
+def solution(s):
+    stack = []
+    for check in s:
+        if not stack:
+            stack.append(check)
+        else:
+            if stack[-1] == ')':
+                return False
+            else:
+                if check == ')':
+                    stack.pop()
+                else:
+                    stack.append(check)
+    
+    if len(stack):
+        return False
+    else:
+        return True
