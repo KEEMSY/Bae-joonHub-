@@ -1,13 +1,4 @@
 def solution(s):
     answer = ''
-    s = s.split(' ')
-    
-    max_num, min_num = int(s[0]), int(s[0])
-    for num in s:
-        if int(num) > max_num:
-            max_num = int(num)
-        if int(num) < min_num:
-            min_num = int(num)
-    
-    answer += str(min_num) + ' ' + str(max_num)
-    return answer
+    s = list(map(int, s.split()))
+    return str(min(s)) + ' ' + str(max(s))
