@@ -1,0 +1,33 @@
+def solution(dirs):
+    visited = set()
+    x, y = 0, 0
+    answer = 0
+    dx = [-1, 1, 0, 0]
+    dy = [0, 0, -1, 1]
+    
+    for dir in dirs:
+        if dir == 'L':
+            nx = x + dx[0]
+            ny = y + dy[0]
+        
+        elif dir == 'R':
+            nx = x + dx[1]
+            ny = y + dy[1]
+        
+        elif dir == 'D':
+            nx = x + dx[2]
+            ny = y + dy[2] 
+        else:
+            nx = x + dx[3]
+            ny = y + dy[3] 
+        
+        
+        if -5 <= nx <= 5 and -5 <= ny <= 5:
+            if (x, y, nx, ny) not in visited:
+                visited.add((x, y, nx, ny))
+                visited.add((nx, ny, x, y))
+                answer += 1
+            x, y = nx, ny
+            
+        
+    return answer
