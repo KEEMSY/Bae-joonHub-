@@ -1,0 +1,15 @@
+def solution(s):
+    count = s.count('0')
+    cnt = 1
+    s = s.replace('0','')
+    while True:
+        check = len(s)
+        if check == 1:
+            break
+        else:
+            s = bin(check)[2:]
+            count += s.count('0')
+            cnt += 1
+        s = s.replace('0','')
+
+    return [cnt, count]
