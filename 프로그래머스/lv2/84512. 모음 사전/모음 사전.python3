@@ -1,3 +1,9 @@
+from itertools import product
+
 def solution(word):
-    answer = 0
-    return answer
+    words = ['A', 'E', 'I', 'O', 'U']
+    word_list = []
+    for i in range(1,6):
+        word_list.extend(map(''.join, product(words, repeat=i)))
+    word_list.sort()
+    return word_list.index(word) + 1
