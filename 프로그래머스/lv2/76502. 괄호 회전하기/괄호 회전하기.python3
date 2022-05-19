@@ -29,7 +29,5 @@ def solution(s):
     for _ in range(len(s)):
         if isVaild(s):
             answer += 1
-        s = list(s)
-        s.append(s.pop(0))
-        s = ''.join(s)
+        s = s[1:] + s[0]
     return answer
