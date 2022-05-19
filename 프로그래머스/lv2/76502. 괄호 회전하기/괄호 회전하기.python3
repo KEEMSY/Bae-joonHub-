@@ -1,0 +1,35 @@
+def isVaild(input_string):
+        stack = []
+        for s in input_string:
+            if not stack:
+                stack.append(s)
+            else:
+                if stack[-1] == '[':
+                    if s == ']':
+                        stack.pop()
+                    else:
+                        stack.append(s)
+                elif stack[-1] == '{':
+                    if s == '}':
+                        stack.pop()
+                    else:
+                        stack.append(s)
+                elif stack[-1] == '(':
+                    if s == ')':
+                        stack.pop()
+                    else:
+                        stack.append(s)
+        if stack:
+            return False
+        else: 
+            return True
+        
+def solution(s):
+    answer = 0
+    for _ in range(len(s)):
+        if isVaild(s):
+            answer += 1
+        s = list(s)
+        s.append(s.pop(0))
+        s = ''.join(s)
+    return answer
