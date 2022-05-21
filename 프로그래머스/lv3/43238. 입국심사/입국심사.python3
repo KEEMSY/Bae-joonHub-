@@ -7,6 +7,8 @@ def solution(n, times):
         total = 0
         for time in times:
             total += mid // time
+            if total >= n:
+                break
         if total >= n:
             right = mid
         else:
