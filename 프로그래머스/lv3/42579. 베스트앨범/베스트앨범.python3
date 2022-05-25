@@ -1,0 +1,22 @@
+from collections import defaultdict
+def solution(genres, plays):
+    answer = []
+
+    cnt = defaultdict(int)
+    for i in range(len(plays)):
+        cnt[genres[i]] += plays[i]
+    orders = list(cnt.items())
+    orders.sort(key= lambda x: -x[1])
+    
+    new_data_list = [[plays[i], genres[i], i] for i in range(len(genres))]
+    new_data_list.sort(key = lambda x: (-x[0], x[2]))
+    
+    dict_data = defaultdict(list)
+    for data in new_data_list:
+        dict_data[data[1]].append([data[0], data[2]])
+    
+    for genr,_ in orders:
+        for data in dict_data[genr][:2]:
+            answer.append(data[1])
+        
+    return answer
