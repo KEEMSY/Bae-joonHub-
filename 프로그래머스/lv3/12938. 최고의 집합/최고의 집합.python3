@@ -1,0 +1,11 @@
+def solution(n, s):
+    answer = []
+    if n > s:
+        return [-1]
+    
+    a, b = divmod(s, n)
+    answer = [a] * n
+    for i in range(b):
+        answer[i] += 1
+        
+    return sorted(answer)
