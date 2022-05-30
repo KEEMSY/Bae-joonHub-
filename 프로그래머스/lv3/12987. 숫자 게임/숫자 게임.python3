@@ -1,9 +1,11 @@
 def solution(A, B):
     answer = 0
-    A.sort(reverse=True)
-    B.sort(reverse=True)
+    A.sort()
+    B.sort()
     for a in A:
-        if a < B[0]:
-            B.pop(0)
-            answer += 1
+        for b in B:
+            if a < b:
+                B.remove(b)
+                answer += 1
+                break
     return answer
