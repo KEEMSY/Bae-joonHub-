@@ -1,11 +1,13 @@
 def check(text):
-    return True if text == text[::-1] else False
+    return True if text == text[::-1] else False       
         
 def solution(s):
-    max = 0
+    answer = 0
+    tmp = set()
+    
     for i in range(len(s)):
         for j in range(i+1, len(s)+1):
-            if check(s[i:j]):
-                if max < len(s[i:j]):
-                    max = len(s[i:j])
-    return max
+            temp_s = s[i:j]
+            if check(temp_s):
+                tmp.add(len(temp_s))
+    return max(tmp)
