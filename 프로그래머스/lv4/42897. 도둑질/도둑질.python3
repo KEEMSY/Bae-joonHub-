@@ -1,0 +1,18 @@
+def solution(money):
+    m = len(money)
+    if m < 4:
+        return max(money)
+    dp = [0] * m
+    dp[0] = money[0]
+    dp[1] = dp[0]
+    for i in range(2, m):
+        dp[i] = max(dp[i-1], dp[i-2] + money[i])
+    temp = dp[m-2]
+    
+    dp[0] = 0
+    dp[1] = money[1]
+    for i in range(2, m):
+        dp[i] = max(dp[i-1], dp[i-2] + money[i])
+    return max(temp, dp[m-1])
+    
+    return answer
