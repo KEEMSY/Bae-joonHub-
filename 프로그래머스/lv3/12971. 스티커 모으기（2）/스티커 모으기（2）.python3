@@ -1,0 +1,19 @@
+def solution(sticker):
+    s = len(sticker)
+    if s < 4:
+        return max(sticker)
+    
+    dp = [0] * (s)
+    dp[0] = sticker[0]
+    dp[1] = dp[0]
+    
+    for i in range(2, s):
+        dp[i] = max(dp[i-1], dp[i-2] + sticker[i])
+    temp = dp[s-2]
+    
+    dp[0] = 0
+    dp[1] = sticker[1]
+    for i in range(2, s):
+        dp[i] = max(dp[i-1], dp[i-2] + sticker[i])
+    
+    return max(temp, dp[s-1])
