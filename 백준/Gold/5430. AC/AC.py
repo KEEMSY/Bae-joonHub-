@@ -1,47 +1,32 @@
-import sys
 from collections import deque
 
-TC = int(sys.stdin.readline())
+t = int(input())
+for _ in range(t):
+    cmd = input()
+    n = int(input())
+    data = deque(input()[1:-1].split(','))
+    if n == 0:
+        data = deque()
+    reverse_flag = False
+    error_flag = False
+    
+    for c in cmd:
+        if c == 'R':
+            reverse_flag = not reverse_flag
 
-for _ in range(TC):
-    cmd = sys.stdin.readline().strip()
-    size = int(sys.stdin.readline())
-
-    line = sys.stdin.readline()[1:-2].split(",")
-    queue = deque()
-    for each in line:
-        if each != '':
-            queue.append(each)
-
-    errorflag = 0
-    reverse = 0
-
-    for each in cmd:
-        if each == "R": 
-            if reverse == 0:
-                reverse = 1
-            else:
-                reverse = 0
-        else: 
-            if queue and queue[0] != '':
-                if reverse == 0:
-                    queue.popleft()
-                else:
-                    queue.pop()
-            else:
-                errorflag = 1
+        elif c == 'D':
+            if not data:
+                error_flag = True
                 break
+            
+            if reverse_flag:
+                data.pop()
+            else: 
+                data.popleft()
 
-    if errorflag == 1:  
-        print("error")
+    if error_flag:
+        print('error')
     else:
-        if reverse == 1:
-            queue.reverse()
-
-        print("[", end='')
-        for i in range(len(queue)):
-            if i == len(queue)-1:
-                print(str(queue[i]),end='')
-            else:
-                print(queue[i],end=',')
-        print("]")
+        if reverse_flag:
+            data.reverse()
+        print('[' + ','.join(data) +']')
