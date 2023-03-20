@@ -1,10 +1,10 @@
 # [level 2] 소수 찾기 - 42839 
 
-[문제 링크](https://programmers.co.kr/learn/courses/30/lessons/42839) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42839) 
 
 ### 성능 요약
 
-메모리: 10.4 MB, 시간: 2.11 ms
+메모리: 10.3 MB, 시간: 1.09 ms
 
 ### 구분
 
@@ -56,8 +56,6 @@
 <ul>
 <li>11과 011은 같은 숫자로 취급합니다.</li>
 </ul>
-
-<p><a href="http://2009.nwerc.eu/results/nwerc09.pdf" target="_blank" rel="noopener">출처</a></p>
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges
