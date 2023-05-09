@@ -1,17 +1,15 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
 
-class Solution {
+public class Solution {
+
     public int solution(int[] nums) {
-        int answer = 0;
-        int limit = nums.length/2;
-        
-        HashSet<Integer> hashSet = new HashSet<Integer>();
-        for(int i=0; i<nums.length; i ++) {
-            hashSet.add(nums[i]);
-        }
-        if(limit < hashSet.size()) answer = limit;
-        else answer = hashSet.size();
-            
-        return answer;
+        int n = nums.length / 2;
+
+        int count = (int) Arrays.stream(nums)
+                .distinct()
+                .count();
+
+        return Math.min(count, n);
     }
 }
