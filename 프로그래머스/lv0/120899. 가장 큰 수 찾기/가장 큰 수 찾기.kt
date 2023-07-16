@@ -1,7 +1,7 @@
 class Solution {
     fun solution(array: IntArray): IntArray {
-        val maxNumber = array.maxOrNull() ?: 0
-        val maxIndex = array.indexOf(maxNumber)
-        return intArrayOf(maxNumber, maxIndex)
-    }
+        return array.maxOf { it }.let {
+            intArrayOf(it, array.indexOf(it))
+        }
+    }    
 }
