@@ -1,27 +1,34 @@
-from collections import deque
+import sys
+sys.setrecursionlimit(10**6)
+k = int(input())
 
-def is_bipartite(V, edges):
-    color = [-1] * V
-    for start_vertex in range(V):
-        if color[start_vertex] == -1:
-            queue = deque([start_vertex])
-            color[start_vertex] = 1  
-            while queue:
-                u = queue.popleft()
-                for v in edges[u]:
-                    if color[v] == -1:
-                        color[v] = 1 - color[u]
-                        queue.append(v)
-                    elif color[v] == color[u]:
-                        return "NO"
-    return "YES"
 
-K = int(input())
-for _ in range(K):
-    V, E = map(int, input().split())
-    edges = [[] for _ in range(V)]
+def DFS(start, visited, graph, group):
+    visited[start] = group
+
+    for v in graph[start]:
+        if visited[v] == 0:
+            result = DFS(v, visited, graph, -group)
+            if not result:
+                return False
+        else:
+            if visited[v] == group:  
+                return False
+    return True
+
+
+for _ in range(k):
+    V, E = map(int, sys.stdin.readline().split())
+    graph = [[] for _ in range(V+1)]
+    visited = [0] * (V+1)
     for _ in range(E):
-        u, v = map(int, input().split())
-        edges[u-1].append(v-1)  
-        edges[v-1].append(u-1)
-    print(is_bipartite(V, edges))
+        a, b = map(int, sys.stdin.readline().split())
+        graph[a].append(b)
+        graph[b].append(a)
+
+    for i in range(1, V+1):
+        if visited[i] == 0:
+            result = (DFS(i, visited, graph, 1))
+            if not result:
+                break
+    print("YES") if result else print("NO")
